@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NETRANOVA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --red: #cc0000;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+  
+  .gallery-icon {
+  width: 36px;
+  height: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  border-radius: 6px;
+}
+
+.gallery-icon:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.gallery-icon svg {
+  width: 30px;
+  height: 30px;
+  stroke: white;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke 0.3s ease;
+}
+
+.gallery-icon:hover svg {
+  stroke: var(--red);
+}
+    
+
+    html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+  z-index: 0;
+  background: black; /* atau hapus jika tidak ingin warna latar */
+}
+
+    
+    
+    
+
+    .navbar {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 60px;
+      background: rgba(11, 11, 13, 0.9);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1.5rem;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.7rem;
+      color: var(--red);
+      letter-spacing: 2px;
+    }
+
+    .menu-toggle {
+      width: 30px;
+      height: 22px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      position: absolute;
+      height: 3px;
+      width: 100%;
+      background: white;
+      border-radius: 4px;
+      transition: 0.3s;
+    }
+
+    .menu-toggle span:nth-child(1) { top: 0; }
+    .menu-toggle span:nth-child(2) { top: 9px; }
+    .menu-toggle span:nth-child(3) { top: 18px; }
+
+    .menu-toggle.open span:nth-child(1) {
+      transform: rotate(45deg); top: 9px;
+    }
+
+    .menu-toggle.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.open span:nth-child(3) {
+      transform: rotate(-45deg); top: 9px;
+    }
+
+    .menu-panel {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      max-width: 320px;
+      height: 100vh;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(15px);
+      transition: right 0.4s ease;
+      z-index: 999;
+      padding: 5rem 2rem 2rem;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--red) transparent;
+    }
+
+    .menu-panel::-webkit-scrollbar {
+      width: 5px;
+    }
+    .menu-panel::-webkit-scrollbar-thumb {
+      background-color: var(--red);
+      border-radius: 10px;
+    }
+
+    .menu-panel.open {
+      right: 0;
+    }
+
+    .menu-item {
+      color: #fff;
+      font-size: 1rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .menu-item svg {
+      width: 22px;
+      height: 22px;
+      stroke: var(--red);
+      margin-right: 0.75rem;
+    }
+
+    .submenu {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      margin-left: 2.5rem;
+      transition: all 0.4s ease;
+    }
+
+    .submenu.open {
+      max-height: 1000px;
+      opacity: 1;
+    }
+
+    .submenu p {
+      padding: 0.4rem 0;
+      margin: 0;
+      font-size: 0.9rem;
+      color: #ccc;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.06);
+      cursor: pointer;
+    }
+
+    header {
+      min-height: 100vh;
+      padding: 8rem 2rem 3rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .photo-panel {
+      width: 400px;
+      height: 250px;
+      border-radius: 25px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+      animation: fadeInScale 1s ease forwards;
+      opacity: 0;
+      transform: scale(0.9);
+    }
+
+    .photo-panel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .intro-text {
+      max-width: 600px;
+      font-size: 1rem;
+      color: #ccc;
+      line-height: 1.7;
+      animation: fadeInText 1.5s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeInScale {
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes fadeInText {
+      to { opacity: 1; }
+    }
+
+    #struktur-kelas {
+      padding: 4rem 2rem;
+    }
+
+    #struktur-kelas h2 {
+      text-align: center;
+      font-size: 2rem;
+      color: var(--red);
+      margin-bottom: 2rem;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    .struktur-item {
+      display: flex;
+      align-items: center;
+      background-color: rgba(0,0,0,0.25);
+      padding: 0.75rem 1rem;
+      border-radius: 15px;
+      gap: 1rem;
+      margin: 1rem auto;
+      max-width: 500px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    .struktur-item.show, #struktur-kelas h2.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .struktur-foto {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .struktur-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .struktur-text span {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    
+    
+   .struktur-text span {
+       color: white;
+   } 
+    
+
+    .struktur-text small {
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+
+    #wali-kelas {
+      padding: 4rem 2rem;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    #wali-kelas.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #wali-kelas h2 {
+      text-align: center;
+      font-size: 2rem;
+      color: var(--red);
+      margin-bottom: 2rem;
+    }
+
+    .wali-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      max-width: 700px;
+      margin: auto;
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 1.5rem;
+      border-radius: 20px;
+    }
+
+    .wali-foto {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .wali-detail {
+      flex: 1;
+      color: #ccc;
+    }
+
+    .wali-detail h3 {
+      font-size: 1.3rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .wali-detail p {
+      font-size: 0.95rem;
+      margin: 0.2rem 0;
+    }
+
+    @media (max-width: 768px) {
+      .photo-panel {
+        width: 300px;
+        height: 180px;
+      }
+
+      .intro-text {
+        font-size: 0.95rem;
+        padding: 0 1rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .wali-container {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+    
+    
+    /* BACKGROUND ANIMASI */
+
+#particles-js, .tech-grid, #hexContainer, #orbsContainer {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Partikel Grid */
+.tech-grid {
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.3;
+}
+
+/* Hexagon */
+.hexagon {
+  position: absolute;
+  width: 60px;
+  height: 34.64px;
+  background: rgba(255, 0, 0, 0.05);
+  transform: rotate(30deg) skewY(30deg);
+  animation: hexPulse 5s infinite;
+}
+
+@keyframes hexPulse {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.2); opacity: 0.6; }
+}
+
+/* Orb */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(20px);
+  z-index: 2;
+}
+  </style>
+</head>
+<body>
+    
+    
+    <!-- Background Animasi -->
+<div id="particles-js"></div>
+<div class="tech-grid"></div>
+<div id="hexContainer"></div>
+<div id="orbsContainer"></div>
+
+
+  <nav class="navbar">
+    <div class="logo">NETRANOVA</div>
+    <div style="display: flex; align-items: center; gap: 1rem;">
+  <div class="gallery-icon" onclick="goToPage('galeri.html')" title="Galeri">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <!-- Body kamera -->
+      <rect x="2" y="5" width="20" height="14" rx="3" ry="3" />
+      <!-- Lensa -->
+      <circle cx="12" cy="12" r="3.2" />
+      <!-- Flash top-left -->
+      <path d="M5 5l1-2h3" />
+      <!-- Preview garis gelombang -->
+      <path d="M8 17c1-1 2.5-2 4-1s2.5 2 4 1" />
+    </svg>
+  </div>
+  <div class="menu-toggle" id="menuBtn">
+    <span></span><span></span><span></span>
+  </div>
+</div>
+</nav>
+
+  <div class="menu-panel" id="menuPanel">
+    <!-- Menu Beranda -->
+    <div class="menu-item" onclick="toggleSubmenu('submenu1')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 12L12 4l8 8" /><path d="M4 12v8h6v-4h4v4h6v-8" /></svg>
+      Beranda
+    </div>
+    <div class="submenu" id="submenu1">
+      <p onclick="scrollToSection('header')">Pengantar</p>
+      <p onclick="scrollToSection('struktur-kelas')">Struktur Kelas</p>
+      <p onclick="scrollToSection('wali-kelas')">Wali Kelas</p>
+    </div>
+
+    <!-- Menu Anggota -->
+    <div class="menu-item" onclick="toggleSubmenu('submenu2')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="7" r="4" /><path d="M5 21v-1a7 7 0 0 1 14 0v1" /><path d="M2 21h20" /></svg>
+      Anggota
+    </div>
+    <div class="submenu" id="submenu2">
+  <p onclick="goToPage('adnan.html')">Adnan Djafar</p>
+  <p onclick="goToPage('ahlun.html')">Ahlun Nazal</p>
+  <p onclick="goToPage('bilal.html')">Ahmad Almustafa</p>
+  <p onclick="goToPage('fadli.html')">Ahmad Fadli</p>
+  <p onclick="goToPage('fauzi.html')">Ahmad Fauzi</p>
+  <p onclick="goToPage('aimin.html')">Aimin</p>
+  <p onclick="goToPage('arsat.html')">Arsat Syahputra</p>
+  <p onclick="goToPage('ceko.html')">Creespho Rafarel</p>
+  <p onclick="goToPage('faldi.html')">Faldi Wahyudin</p>
+  <p onclick="goToPage('faril.html')">Faril</p>
+  <p onclick="goToPage('firman.html')">Firman</p>
+  <p onclick="goToPage('helen.html')">Helen Clora</p>
+  <p onclick="goToPage('indawati.html')">Indawati</p>
+  <p onclick="goToPage('irfan.html')">La Irfan</p>
+  <p onclick="goToPage('ezi.html')">Ld. Muhammad Muhajirin</p>
+  <p onclick="goToPage('iky.html')">Ld. Rizky Indrawan</p>
+  <p onclick="goToPage('fila.html')">Marfila</p>
+  <p onclick="goToPage('misna.html')">Misna</p>
+  <p onclick="goToPage('vita.html')">Nurvita Fadhylla</p>
+  <p onclick="goToPage('safila.html')">Safila</p>
+  <p onclick="goToPage('silvi.html')">Silvi</p>
+  <p onclick="goToPage('bili.html')">Vernando Bili</p>
+  <p onclick="goToPage('nia.html')">Waode Nurnia</p>
+  <p onclick="goToPage('putri.html')">Waode Putri</p>
+  <!-- Tambahkan sisanya sesuai keinginan -->
+</div>
+
+    <!-- Menu Materi -->
+    <div class="menu-item" onclick="toggleSubmenu('submenu3')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path d="M3 5h7a2 2 0 0 1 2 2v12a2 2 0 0 0-2-2H3z" />
+        <path d="M21 5h-7a2 2 0 0 0-2 2v12a2 2 0 0 1 2-2h7z" />
+        <path d="M12 7v10" />
+      </svg>
+      Materi PKL
+    </div>
+   <div class="submenu" id="submenu3">
+  <p onclick="goToPage('CAKRAWALA.html')">Cakrawala (Baubau)</p>
+  <p onclick="goToPage('TRANS.html')">Trans Digital (Baubau)</p>
+  <p onclick="goToPage('YOGI.html')">Yogi Komputer (Baubau)</p>
+  <p onclick="goToPage('TELKOM.html')">Telkom (Baubau)</p>
+  <p onclick="goToPage('MENTARI.html')">Mentari Computer (Baubau)</p>
+  <p onclick="goToPage('PORTABLE.html')">Portable Computer (Baubau)</p>
+  <p onclick="goToPage('PENDAKIAN.html')">Pendakian Komputer (Baubau)</p>
+  <p onclick="goToPage('MEDIA-JARINGAN.html')">Media Jaringan (Kediri)</p>
+  <p onclick="goToPage('TKJ-CLUB.html')">TKJ Club (Makassar)</p>
+  <!-- Tambahkan materi lainnya sesuai kebutuhan -->
+</div>
+</div>
+
+  <header id="header">
+    <div class="photo-panel"><img src="FHU1.png" alt="Foto Kamu" /></div>
+    <div class="photo-panel" style="margin-top: 1.5rem;"><img src="FHU2.png" alt="Foto Tambahan" /></div>
+    <div class="photo-panel" style="margin-top: 1.5rem;"><img src="FHU3.png" alt="Foto Tambahan" /></div>
+    <div class="photo-panel" style="margin-top: 1.5rem;"><img src="FHU4.png" alt="Foto Tambahan" /></div>
+    <div class="photo-panel" style="margin-top: 1.5rem;"><img src="FHU5.png" alt="Foto Tambahan" /></div>
+    <div class="photo-panel" style="margin-top: 1.5rem;"><img src="FHU6.png" alt="Foto Tambahan" /></div>
+    <p class="intro-text">
+      Selamat Datang Di Website Resmi Kelas <strong>NETRANOVA (TKJ 2 2025)</strong>. Ruang Digital Tempat Kita Mengulang Dan Berbagai Semua Kenangan Bersama.
+    </p>
+  </header>
+
+  <section id="struktur-kelas">
+    <h2>STRUKTUR KELAS</h2>
+    <div class="struktur-item"><img src="irfan.png" class="struktur-foto" alt="Ketua"><div class="struktur-text"><span>Ketua</span><small>La Irfan</small></div></div>
+    <div class="struktur-item"><img src="helen.png" class="struktur-foto" alt="Wakil Ketua"><div class="struktur-text"><span>Wakil Ketua</span><small>Helen Clora Tanjaya</small></div></div>
+    <div class="struktur-item"><img src="misna.png" class="struktur-foto" alt="Bendahara"><div class="struktur-text"><span>Bendahara</span><small>Misna</small></div></div>
+    <div class="struktur-item"><img src="bili.png" class="struktur-foto" alt="Wakil Bendahara"><div class="struktur-text"><span>Wakil Bendahara</span><small>Vernando Bili</small></div></div>
+    <div class="struktur-item"><img src="silvi.png" class="struktur-foto" alt="Seksi Keamanan"><div class="struktur-text"><span>Sekretaris</span><small>Silvi</small></div></div>
+    <div class="struktur-item"><img src="bilal.png" class="struktur-foto" alt="Seksi Rohani"><div class="struktur-text"><span>Seksi Keamanan</span><small>Ahmad Almustafa</small></div></div>
+    <div class="struktur-item"><img src="firman.png" class="struktur-foto" alt="Jasmani"><div class="struktur-text"><span>Seksi Rohani</span><small>Firman</small></div></div>
+  </section>
+
+  <section id="wali-kelas">
+    <h2>WALI KELAS</h2>
+    <div class="wali-container">
+      <img src="hasiadi.png" alt="Foto Wali Kelas" class="wali-foto" />
+      <div class="wali-detail">
+        <h3>Nama: Hasiadi Abdullah S.Kom</h3>
+        <p>Mata Pelajaran: Keterampilan Jaringan</p>
+        <p>Motivasi: "Teruslah Belajar, Karena Ilmu Adalah Cahaya Kehidupan."</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const btn = document.getElementById('menuBtn');
+    const panel = document.getElementById('menuPanel');
+
+    btn.addEventListener('click', () => {
+      btn.classList.toggle('open');
+      panel.classList.toggle('open');
+    });
+
+    function toggleSubmenu(id) {
+      document.querySelectorAll('.submenu').forEach(sub => {
+        if (sub.id !== id) sub.classList.remove('open');
+      });
+      document.getElementById(id).classList.toggle('open');
+    }
+
+    function scrollToSection(id) {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        btn.classList.remove('open');
+        panel.classList.remove('open');
+      }
+    }
+
+    function goToPage(url) {
+      window.location.href = url;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.struktur-item, #struktur-kelas h2, #wali-kelas, header, navbar').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+  <!-- Script Partikel & Efek -->
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script>
+  // Inisialisasi Particles.js
+  particlesJS("particles-js", {
+    particles: {
+      number: { value: 80, density: { enable: true, value_area: 800 } },
+      color: { value: "#ff0000" },
+      shape: { type: "circle" },
+      opacity: { value: 0.5, random: true },
+      size: { value: 3, random: true },
+      line_linked: {
+        enable: true,
+        distance: 150,
+        color: "#ff3355",
+        opacity: 0.2,
+        width: 1
+      },
+      move: {
+        enable: true,
+        speed: 2,
+        random: true,
+        out_mode: "out"
+      }
+    },
+    interactivity: {
+      detect_on: "canvas",
+      events: {
+        onhover: { enable: true, mode: "repulse" },
+        onclick: { enable: true, mode: "push" }
+      }
+    }
+  });
+
+  // Hexagon
+  const hexContainer = document.getElementById('hexContainer');
+  const cols = Math.ceil(window.innerWidth / 60);
+  const rows = Math.ceil(window.innerHeight / 34.64) + 1;
+  for (let y = 0; y < rows; y++) {
+    for (let x = 0; x < cols; x++) {
+      const hex = document.createElement('div');
+      hex.className = 'hexagon';
+      hex.style.left = `${x * 60 + (y % 2 ? 30 : 0)}px`;
+      hex.style.top = `${y * 34.64}px`;
+      hexContainer.appendChild(hex);
+    }
+  }
+
+  // Orbs
+  const orbColors = [
+    'rgba(255, 0, 0, 0.2)',
+    'rgba(0, 188, 212, 0.2)',
+    'rgba(156, 39, 176, 0.2)',
+    'rgba(3, 169, 244, 0.2)'
+  ];
+  const orbsContainer = document.getElementById('orbsContainer');
+  for (let i = 0; i < 6; i++) {
+    const orb = document.createElement('div');
+    orb.className = 'orb';
+    orb.style.width = `${50 + Math.random() * 200}px`;
+    orb.style.height = orb.style.width;
+    orb.style.background = orbColors[i % orbColors.length];
+    orb.style.left = `${Math.random() * 100}%`;
+    orb.style.top = `${Math.random() * 100}%`;
+    orb.style.animation = `float${i} ${8 + Math.random() * 10}s infinite ease-in-out`;
+    orbsContainer.appendChild(orb);
+
+    // Buat animasi unik untuk setiap orb
+    const style = document.createElement('style');
+    style.innerHTML = `
+      @keyframes float${i} {
+        0%, 100% { transform: translate(0, 0); }
+        25% { transform: translate(${50 - Math.random() * 100}px, ${50 - Math.random() * 100}px); }
+        50% { transform: translate(${50 - Math.random() * 100}px, ${50 - Math.random() * 100}px); }
+        75% { transform: translate(${50 - Math.random() * 100}px, ${50 - Math.random() * 100}px); }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+</script>
+
+</body>
+</html>

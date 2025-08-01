@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeri Kenangan - NETRANOVA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #111216;
+      --primary: #e63946;
+      --text: #f8f9fa;
+      --muted: #adb5bd;
+      --accent: #1c1d22;
+      --hover-glow: 0 4px 20px rgba(230, 57, 70, 0.3);
+    }
+    
+    
+  .strong-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 3.5rem 0;
+  gap: 1rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.strong-divider.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.strong-divider .line {
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.15);
+  flex-grow: 1;
+}
+
+.strong-divider .center {
+  width: 60px;
+  height: 4px;
+  background-color: var(--primary);
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(230, 57, 70, 0.3);
+}
+    
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      scroll-behavior: smooth;
+      line-height: 1.6;
+    }
+
+    .wrapper {
+      max-width: 1100px;
+      margin: auto;
+      padding: 4rem 1.5rem;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--primary);
+      text-align: center;
+      margin-bottom: 2.5rem;
+      letter-spacing: 0.5px;
+      position: relative;
+    }
+
+    .carousel-container {
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 4rem;
+    }
+
+    .carousel {
+      display: flex;
+      gap: 1.5rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 1rem;
+    }
+
+    .carousel::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .carousel::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 6px;
+    }
+
+    .carousel-item {
+      flex: 0 0 70%;
+      scroll-snap-align: center;
+      background-color: var(--accent);
+      border-radius: 14px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      transition: all 0.35s ease;
+      transform: scale(0.94);
+      backdrop-filter: blur(5px);
+    }
+
+    .carousel-item:hover {
+      transform: scale(1.02);
+      box-shadow: var(--hover-glow);
+      z-index: 3;
+    }
+
+    .carousel-item img,
+    .carousel-item video {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .carousel-item video {
+      background-color: black;
+    }
+
+    .caption {
+      text-align: center;
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+      color: var(--muted);
+      font-weight: 500;
+      background-color: rgba(255, 255, 255, 0.03);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    @media (max-width: 768px) {
+      .carousel-item {
+        flex: 0 0 85%;
+      }
+
+      .carousel-item img,
+      .carousel-item video {
+        height: 200px;
+      }
+
+      .section-title {
+        font-size: 1.6rem;
+      }
+
+      .caption {
+        font-size: 0.9rem;
+      }
+    }
+
+    /* Animasi masuk per bagian */
+    .fade-section {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <!-- FOTO -->
+    <div class="section-title fade-section">GALERI FOTO</div>
+    <div class="carousel-container fade-section">
+      <div class="carousel">
+        <div class="carousel-item">
+          <img src="f1.png" alt="Foto 1">
+          <div class="caption">Hari Kelulusan</div>
+        </div>
+        <div class="carousel-item">
+          <img src="f2.png" alt="Foto 2">
+          <div class="caption">Hari Kelulusan</div>
+        </div>
+        <div class="carousel-item">
+          <img src="f3.png" alt="Foto 3">
+          <div class="caption">Foto Seangkatan</div>
+        </div>
+        <div class="carousel-item">
+  <img src="f4.png" alt="Foto 4">
+  <div class="caption">Pengambilan Foto Ijasah</div>
+</div>
+<div class="carousel-item">
+  <img src="f5.png" alt="Foto 4">
+  <div class="caption">Pengambilan Foto Ijasah</div>
+</div>
+<div class="carousel-item">
+  <img src="f6.png" alt="Foto 4">
+  <div class="caption">Sebelum Kelulusan</div>
+</div>
+<div class="carousel-item">
+  <img src="f7.png" alt="Foto 4">
+  <div class="caption">Setelah UKK</div>
+</div>
+<div class="carousel-item">
+  <img src="f8.png" alt="Foto 4">
+  <div class="caption">H-1 Sebelum PKL</div>
+</div>
+<div class="carousel-item">
+  <img src="f9.png" alt="Foto 4">
+  <div class="caption">Jalan-jalan Sebelum PKL</div>
+</div>
+<div class="carousel-item">
+  <img src="f10.png" alt="Foto 4">
+  <div class="caption">Maulid Nabi</div>
+</div>
+<div class="carousel-item">
+  <img src="f11.png" alt="Foto 4">
+  <div class="caption">Setelah Upacara Hari Pahlawan</div>
+</div>
+<div class="carousel-item">
+  <img src="f12.png" alt="Foto 4">
+  <div class="caption">Simulasi Pemilihan</div>
+</div>
+<div class="carousel-item">
+  <img src="f13.png" alt="Foto 4">
+  <div class="caption">Simulasi Pemilihan</div>
+</div>
+<div class="carousel-item">
+  <img src="f14.png" alt="Foto 4">
+  <div class="caption">Hari Pertama Masuk Sekolah</div>
+</div>
+<div class="carousel-item">
+  <img src="f15.png" alt="Foto 4">
+  <div class="caption">Hari Pertama Masuk Sekolah</div>
+</div>
+      </div>
+    </div>
+
+<!-- PEMISAH PROFESIONAL -->
+<div class="strong-divider fade-section">
+  <div class="line left"></div>
+  <div class="line center"></div>
+  <div class="line right"></div>
+</div>
+
+    <!-- VIDEO -->
+    <div class="section-title fade-section">GALERI VIDEO</div>
+    <div class="carousel-container fade-section">
+      <div class="carousel">
+        <div class="carousel-item">
+          <video controls>
+            <source src="v1.mp4" type="video/mp4">
+          </video>
+          <div class="caption">Semua Foto Kenangan</div>
+        </div>
+        <div class="carousel-item">
+          <video controls>
+            <source src="v2.mp4" type="video/mp4">
+          </video>
+          <div class="caption">Rindu Masanya</div>
+        </div>
+        <div class="carousel-item">
+          <video controls>
+            <source src="v3.mp4" type="video/mp4">
+          </video>
+          <div class="caption">Makan Untuk Berpisah</div>
+        </div>
+        <div class="carousel-item">
+  <video controls>
+    <source src="v4.mp4" type="video/mp4">
+  </video>
+  <div class="caption">Indahnya Awalan Itu</div>
+</div>
+<div class="carousel-item">
+  <video controls>
+    <source src="v5.mp4" type="video/mp4">
+  </video>
+  <div class="caption">Rekap Setahun Terakhir</div>
+</div>
+<div class="carousel-item">
+  <video controls>
+    <source src="v6.mp4" type="video/mp4">
+  </video>
+  <div class="caption">Semoga Saja Masih Sama</div>
+</div>
+<div class="carousel-item">
+  <video controls>
+    <source src="v7.mp4" type="video/mp4">
+  </video>
+  <div class="caption">Rekap 2 Tahun Pertama</div>
+</div>
+<div class="carousel-item">
+  <video controls>
+    <source src="v8.mp4" type="video/mp4">
+  </video>
+  <div class="caption">Starboy Liburan</div>
+</div>
+<div class="carousel-item">
+  <video controls>
+    <source src="v9.mp4" type="video/mp4">
+  </video>
+  <div class="caption">Galau Ala-ala</div>
+</div>
+<div class="carousel-item">
+  <video controls>
+    <source src="v10.mp4" type="video/mp4">
+  </video>
+  <div class="caption">Bonus Aib</div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Kontrol video otomatis berhenti jika keluar layar
+    const videos = document.querySelectorAll(".carousel-item video");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const video = entry.target;
+        if (!entry.isIntersecting) {
+          video.pause();
+        }
+      });
+    }, {
+      threshold: 0.6,
+    });
+
+    videos.forEach(video => {
+      observer.observe(video);
+      video.addEventListener("play", () => {
+        videos.forEach(v => {
+          if (v !== video) v.pause();
+        });
+      });
+    });
+
+    // Animasi masuk satu per satu
+    window.addEventListener('DOMContentLoaded', () => {
+      const fadeSections = document.querySelectorAll('.fade-section');
+      fadeSections.forEach((section, index) => {
+        setTimeout(() => {
+          section.classList.add('visible');
+        }, 400 * index); // delay antar elemen
+      });
+    });
+  </script>
+</body>
+</html>
