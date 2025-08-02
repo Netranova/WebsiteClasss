@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profil Anggota - NETRANOVA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+      
+  .bio-panel.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+
+.bio-panel.scroll-reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+   
+      
+    :root {
+      --bg: #0e0e11;
+      --primary: #b02a2a;
+      --text: #f3f3f3;
+      --muted: #999;
+      --accent: #1f1f22;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      scroll-behavior: smooth;
+    }
+
+    .wrapper {
+      max-width: 900px;
+      margin: auto;
+      padding: 4rem 1.5rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .hero img {
+      width: 160px;
+      height: 160px;
+      border-radius: 16px;
+      object-fit: cover;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      margin-top: 0.4rem;
+    }
+
+    section {
+      padding: 3rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .about p {
+      font-size: 1.05rem;
+      max-width: 700px;
+    }
+
+    /* BIO PANEL */
+    .bio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .bio-panel {
+      background-color: var(--accent);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 1rem;
+      border-radius: 10px;
+    }
+
+    .bio-panel strong {
+      display: block;
+      color: var(--primary);
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+    }
+
+    .bio-panel span {
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .about p {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <!-- HERO -->
+    <div class="hero reveal">
+      <img src="irfan.png" alt="Foto Profil">
+      <h1>LA IRFAN</h1>
+      <p>Ketua Kelas</p>
+    </div>
+
+    <!-- BIO PANEL -->
+    <section class="bio reveal">
+      <div class="section-title">Biodata</div>
+      <div class="bio-grid">
+        <div class="bio-panel">
+          <strong>Hobi:</strong>
+          <span>Lari Dan Berenang</span>
+        </div>
+        <div class="bio-panel">
+          <strong>Zodiak:</strong>
+          <span>Aquarius</span>
+        </div>
+        <div class="bio-panel scroll-reveal">
+          <strong>Jenis Kelamin:</strong>
+          <span>Laki-laki</span>
+        </div>
+        <div class="bio-panel scroll-reveal">
+          <strong>Tipe Pasangan:</strong>
+          <span>Ada Yang Penting</span>
+        </div>
+        <div class="bio-panel scroll-reveal">
+          <strong>Makanan Favorit:</strong>
+          <span>Nasi Padang</span>
+        </div>
+        <div class="bio-panel scroll-reveal">
+          <strong>Minuman Favorit:</strong>
+          <span>Teh</span>
+        </div>
+        <div class="bio-panel scroll-reveal">
+          <strong>Cita-cita:</strong>
+          <span>Pebisnis Dan TNI</span>
+        </div>
+        <div class="bio-panel scroll-reveal">
+          <strong>Kata-kata Hari Ini:</strong>
+          <span>"Cuma Diri Mu Sendiri Yang Bisa Menggapai Impian Mu, Jadi Tetap Lah Berusaha Sampai Orang Melihat Mu Bisa."</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- JavaScript untuk animasi scroll -->
+  <script>
+    const reveals = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    reveals.forEach(reveal => {
+      observer.observe(reveal);
+    });
+  </script>
+  <script>
+  // Pilih hanya panel dengan kelas scroll-reveal
+  const scrollPanels = document.querySelectorAll(".bio-panel.scroll-reveal");
+
+  const panelObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add("show");
+        }, index * 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  scrollPanels.forEach(panel => {
+    panelObserver.observe(panel);
+  });
+</script>
+</body>
+</html>

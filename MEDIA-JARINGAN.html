@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Materi - NETRANOVA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #bd1e1e;
+      --bg: #0f0f11;
+      --surface: #18181b;
+      --text: #ffffff;
+      --muted: #a1a1aa;
+      --border: #2a2a2e;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      font-family: 'Urbanist', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+    }
+
+    .container {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    header {
+      padding: 2rem 1rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    header h2 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .nav-buttons {
+      margin-top: 1.2rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .nav-buttons button {
+      background-color: transparent;
+      border: 1px solid var(--border);
+      padding: 0.5rem 1.2rem;
+      border-radius: 6px;
+      color: var(--text);
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .nav-buttons button:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .materi-item {
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .materi-item h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .materi-item p {
+      font-size: 1rem;
+      color: var(--text);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 99;
+      background: rgba(189, 30, 30, 0.15);
+      border: 1px solid rgba(189, 30, 30, 0.3);
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+      backdrop-filter: blur(4px);
+    }
+
+    #scrollTopBtn:hover {
+      background: rgba(189, 30, 30, 0.3);
+      transform: scale(1.08);
+    }
+
+    #scrollTopBtn svg {
+      width: 24px;
+      height: 24px;
+      stroke: white;
+      stroke-width: 2;
+    }
+
+    /* ANIMASI FADE IN SAAT LOAD */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    .fade-in.delay-1 { animation-delay: 0.2s; }
+    .fade-in.delay-2 { animation-delay: 0.4s; }
+    .fade-in.delay-3 { animation-delay: 0.6s; }
+    .fade-in.delay-4 { animation-delay: 0.8s; }
+    .fade-in.delay-5 { animation-delay: 1s; }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ANIMASI MUNCUL SAAT SCROLL */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.6s ease-out;
+    }
+
+    .scroll-reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 600px) {
+      header h2 {
+        font-size: 1.5rem;
+      }
+
+      .nav-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .nav-buttons button {
+        width: 100%;
+        max-width: 280px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="fade-in delay-1">
+    <h2>MEDIA JARINGAN</h2>
+    <div class="nav-buttons fade-in delay-2">
+      <button onclick="scrollToSection('m1')">IKSO</button>
+      <button onclick="scrollToSection('m2')">IUDP</button>
+      <button onclick="scrollToSection('m3')">IPAPS</button>
+      <button onclick="scrollToSection('m4')">P4K</button>
+      <button onclick="scrollToSection('DC')">Download File PKL</button>
+    </div>
+  </header>
+
+  <!-- Konten -->
+  <main class="container">
+    <div class="materi-item fade-in delay-3" id="m1">
+      <h3>Instalasi dan Konfigurasi Sistem Operasi</h3>
+      <p>Persiapan instalasi sistem operasi:</p>
+      <p>Menyiapkan file ISO dari sistem operasi (contoh: Windows 10), Membuat media instalasi bootable menggunakan software seperti Rufus, Menentukan jenis partisi (MBR atau GPT) sesuai perangkat target.</p>
+      <p>Pengaturan BIOS/UEFI:</p>
+      <p>Mengatur boot priority agar flashdisk terbaca lebih dulu, Menonaktifkan fitur Secure Boot jika instalasi tidak kompatibel, Mengaktifkan Legacy Mode atau UEFI sesuai kebutuhan.</p>
+      <p>Langkah instalasi sistem operasi:</p>
+      <p>Memilih drive target dan melakukan partisi atau format, Menyelesaikan wizard instalasi OS hingga reboot otomatis, Pengaturan awal sistem: nama perangkat, zona waktu, dan user account.</p>
+      <p>Verifikasi pasca instalasi:</p>
+      <p>Mengecek fungsi dasar seperti respons sistem, keyboard, dan layar, Memastikan sistem tidak mengalami crash saat startup, Melakukan pengecekan terhadap lisensi sistem (aktivasi).</p>
+    </div>
+
+    <div class="materi-item scroll-reveal" id="m2">
+      <h3>Instalasi dan Update Driver Perangkat</h3>
+      <p>Pendeteksian perangkat keras tanpa driver:</p>
+      <p>Menggunakan Device Manager untuk mendeteksi perangkat yang belum dikenali, Mengidentifikasi hardware ID sebagai acuan pencarian driver.</p>
+      <p>Instalasi driver secara manual:</p>
+      <p>Mengunduh driver dari situs resmi vendor perangkat (misal: intel.com, asus.com), Melakukan instalasi satu per satu: VGA, audio, LAN, WLAN, chipset, dan touchpad.</p>
+      <p>Instalasi driver secara otomatis:</p>
+      <p>Menggunakan software seperti DriverPack Solution atau Snappy Driver Installer, Menjalankan pemindaian otomatis dan pemasangan semua driver secara batch.</p>
+      <p>Verifikasi fungsi driver:</p>
+      <p>Memastikan koneksi jaringan dapat digunakan setelah driver LAN/WLAN terpasang, Mengatur resolusi layar tinggi setelah VGA driver diinstal, Menguji suara speaker/headset setelah driver audio terpasang.</p>
+    </div>
+
+    <div class="materi-item scroll-reveal" id="m3">
+      <h3>Instalasi dan Pengaturan Aplikasi Pendukung Sistem</h3>
+      <p>Instalasi aplikasi perkantoran:</p>
+      <p>Microsoft Office (Word, Excel, PowerPoint), Pengaturan aktivasi dan update otomatis.</p>
+      <p>Instalasi aplikasi utilitas:</p>
+      <p>WinRAR untuk kompresi dan ekstraksi file arsip, Google Chrome atau Mozilla Firefox sebagai browser utama, VLC Media Player untuk pemutaran file audio dan video.</p>
+      <p>Aplikasi pengelola sistem:</p>
+      <p>CCleaner untuk pembersihan sistem dan registry, Task Manager untuk mengatur aplikasi startup, Autoruns untuk menonaktifkan layanan tidak penting.</p>
+      <p>Instalasi antivirus dan keamanan:</p>
+      <p>Antivirus lokal (Smadav) dan/atau global (Avast, Bitdefender), Pemindaian awal setelah instalasi dan aktivasi fitur proteksi real-time.</p>
+      <p>Penghapusan bloatware:</p>
+      <p>Menghapus aplikasi bawaan sistem yang tidak diperlukan, Mengurangi beban RAM dan mempercepat booting sistem.</p>
+    </div>
+
+    <div class="materi-item scroll-reveal" id="m4">
+      <h3>Perawatan, Pembersihan, dan Penanganan Perangkat Keras</h3>
+      <p>Pembersihan fisik internal perangkat:</p>
+      <p>Membongkar casing laptop/PC menggunakan obeng presisi, Membersihkan motherboard, fan, dan heatsink dengan blower atau kuas halus, Mengganti thermal paste pada prosesor untuk pendinginan optimal.</p>
+      <p>Pemeriksaan fungsi komponen:</p>
+      <p>Menjalankan fan test untuk memastikan kipas berjalan normal, Mengecek kondisi baterai, RAM, dan konektor power menggunakan multimeter.</p>
+      <p>Perawatan port dan slot:</p>
+      <p>Membersihkan port USB, HDMI, LAN, dan jack audio menggunakan cairan isopropil alkohol, Memastikan tidak ada port yang longgar atau patah.</p>
+      <p>Pembersihan eksternal perangkat:</p>
+      <p>Membersihkan keyboard dari debu menggunakan vacuum mini, Mengelap layar LCD dengan lap microfiber, Membersihkan body laptop/PC dengan cairan pembersih non-korosif.</p>
+    </div>
+  </main>
+
+  <!-- Panel Unduhan Elegan -->
+  <section class="scroll-reveal" id="DC" style="background-color: var(--bg); padding: 3rem 1.5rem 4rem; border-top: 1px solid var(--border);">
+    <div style="max-width: 880px; margin: 0 auto;">
+      <h3 style="font-size: 1.2rem; font-weight: 600; color: var(--primary); margin-bottom: 1.5rem; border-left: 4px solid var(--primary); padding-left: 0.75rem;">
+        Download File PKL
+      </h3>
+      <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+        <a href="CEKO.pdf" download style="padding: 0.75rem 1rem; background-color: var(--surface); border: 1px solid var(--border); border-radius: 6px; color: var(--text); text-decoration: none; font-size: 0.95rem; transition: background 0.2s;">
+          File 1
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tombol Scroll ke Atas -->
+  <button id="scrollTopBtn" title="Kembali ke Atas" aria-label="Scroll to top">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+    </svg>
+  </button>
+
+  <!-- Script -->
+  <script>
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    const scrollBtn = document.getElementById("scrollTopBtn");
+    window.addEventListener("scroll", () => {
+      scrollBtn.style.display = window.scrollY > 100 ? "flex" : "none";
+    });
+    scrollBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // Animasi scroll masuk
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>
