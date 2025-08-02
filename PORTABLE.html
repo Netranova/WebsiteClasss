@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Materi - NETRANOVA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #bd1e1e;
+      --bg: #0f0f11;
+      --surface: #18181b;
+      --text: #ffffff;
+      --muted: #a1a1aa;
+      --border: #2a2a2e;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      font-family: 'Urbanist', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+    }
+
+    .container {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    header {
+      padding: 2rem 1rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    header h2 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .nav-buttons {
+      margin-top: 1.2rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .nav-buttons button {
+      background-color: transparent;
+      border: 1px solid var(--border);
+      padding: 0.5rem 1.2rem;
+      border-radius: 6px;
+      color: var(--text);
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .nav-buttons button:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .materi-item {
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .materi-item h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .materi-item p {
+      font-size: 1rem;
+      color: var(--text);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 99;
+      background: rgba(189, 30, 30, 0.15);
+      border: 1px solid rgba(189, 30, 30, 0.3);
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+      backdrop-filter: blur(4px);
+    }
+
+    #scrollTopBtn:hover {
+      background: rgba(189, 30, 30, 0.3);
+      transform: scale(1.08);
+    }
+
+    #scrollTopBtn svg {
+      width: 24px;
+      height: 24px;
+      stroke: white;
+      stroke-width: 2;
+    }
+
+    /* ANIMASI FADE IN SAAT LOAD */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    .fade-in.delay-1 { animation-delay: 0.2s; }
+    .fade-in.delay-2 { animation-delay: 0.4s; }
+    .fade-in.delay-3 { animation-delay: 0.6s; }
+    .fade-in.delay-4 { animation-delay: 0.8s; }
+    .fade-in.delay-5 { animation-delay: 1s; }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ANIMASI MUNCUL SAAT SCROLL */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.6s ease-out;
+    }
+
+    .scroll-reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 600px) {
+      header h2 {
+        font-size: 1.5rem;
+      }
+
+      .nav-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .nav-buttons button {
+        width: 100%;
+        max-width: 280px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="fade-in delay-1">
+    <h2>PORTABLE COMPUTER</h2>
+    <div class="nav-buttons fade-in delay-2">
+      <button onclick="scrollToSection('m1')">ISOW</button>
+      <button onclick="scrollToSection('m2')">PRP</button>
+      <button onclick="scrollToSection('m3')">PPKK</button>
+      <button onclick="scrollToSection('m4')">IKFO</button>
+      <button onclick="scrollToSection('DC')">Download File PKL</button>
+    </div>
+  </header>
+
+  <!-- Konten -->
+  <main class="container">
+    <div class="materi-item fade-in delay-3" id="m1">
+      <h3>Praktik Instal Ulang Sistem Operasi Windows</h3>
+      <p>Dalam dunia kerja teknisi komputer, kemampuan melakukan instalasi ulang sistem operasi adalah keterampilan dasar yang sangat penting. Pada kegiatan PKL di Portabel Comp, Faril melakukan praktik instal ulang laptop menggunakan Windows 7 32-bit.</p>
+      <p>Langkah-langkah instalasi meliputi:</p>
+      <p>Persiapan awal dengan melakukan backup data penting dari drive C ke drive D/E, dan mengganti nama drive C menjadi “Instal” agar tidak keliru saat diformat.</p>
+      <p>Masuk ke BIOS, lalu mengatur booting dari media flashdisk.</p>
+      <p>Menjalankan installer Windows dan memilih versi OS (Windows 7 Ultimate), menyetujui lisensi, lalu memilih opsi “Custom (advanced)”.</p>
+      <p>Memformat drive C, lalu melanjutkan proses instalasi hingga perangkat restart secara otomatis.</p>
+      <p>Melakukan pengaturan awal seperti nama user, password, zona waktu, dan tanggal.</p>
+      <p>Setelah selesai, menginstal driver menggunakan aplikasi Snappy Driver Installer, lalu menginstal aplikasi standar termasuk Microsoft Office.</p>
+      <p>Praktik ini memperkuat pemahaman peserta terhadap alur instalasi sistem operasi dari awal hingga sistem siap digunakan.</p>
+    </div>
+
+    <div class="materi-item scroll-reveal" id="m2">
+      <h3>Perbaikan dan Reset Printer Epson L360</h3>
+      <p>Salah satu kegiatan rutin dalam PKL adalah melakukan perawatan dan perbaikan printer, terutama model Epson L360. Printer jenis ini sering membutuhkan reset ketika telah mencapai batas pemakaian tinta.</p>
+      <p>Langkah-langkah mereset printer antara lain:</p>
+      <p>Mengenali indikasi printer harus di-reset, yaitu lampu indikator berkedip dan muncul pesan error saat mencetak.</p>
+      <p>Mengunduh resetter Epson L360, mengekstrak file, dan menjalankan program Epson Adjustment Program.</p>
+      <p>Memilih model printer dan port, lalu membuka Particular Adjustment Mode.</p>
+      <p>Masuk ke menu Waste Ink Pad Counter, lalu centang opsi "Main pad counter".</p>
+      <p>Menekan tombol Check, lalu Initialize, hingga muncul instruksi untuk mematikan dan menghidupkan ulang printer.</p>
+      <p>Jika semua langkah berhasil, maka printer akan kembali normal dan siap digunakan.</p>
+      <p>Melalui kegiatan ini, siswa belajar pentingnya pemeliharaan printer dan bagaimana mengatasi masalah teknis umum tanpa perlu mengganti perangkat.</p>
+    </div>
+
+    <div class="materi-item scroll-reveal" id="m3">
+      <h3>Pembongkaran dan Perakitan Komponen Komputer</h3>
+      <p>Kemampuan membongkar dan merakit ulang komputer adalah keterampilan inti yang dilatih selama PKL. Dalam PKL, kegiatan ini dilakukan berkali-kali terhadap CPU, laptop, dan printer.</p>
+      <p>Langkah-langkah umum yang dilakukan peserta meliputi:</p>
+      <p>Melepas casing dan komponen internal dengan hati-hati, seperti motherboard, harddisk, RAM, kipas, dan kabel-kabel.</p>
+      <p>Membersihkan debu pada perangkat menggunakan kuas atau blower kecil.</p>
+      <p>Mengganti atau memasang kembali komponen, misalnya memasang harddisk baru atau RAM tambahan.</p>
+      <p>Memastikan semua koneksi power supply dan kabel data tersambung dengan benar sebelum menutup casing dan menyalakan perangkat.</p>
+      <p>Dengan kegiatan ini, peserta memahami struktur fisik komputer, fungsi tiap komponen, dan cara mengatasi kerusakan fisik atau masalah koneksi.</p>
+    </div>
+
+    <div class="materi-item scroll-reveal" id="m4">
+      <h3>Instalasi Kabel Fiber Optik dan Pengenalan Jaringan Dasar</h3>
+      <p>Peserta juga mendapat kesempatan melakukan praktik memasang kabel Fiber Optik (FO), yang merupakan teknologi jaringan kecepatan tinggi.</p>
+      <p>Kegiatan ini melibatkan:</p>
+      <p>Mengenali jenis kabel FO dan fungsi masing-masing ujung konektornya.</p>
+      <p>Memasang kabel FO secara rapi dan aman pada perangkat atau titik jaringan.</p>
+      <p>Memastikan kualitas sambungan dan tidak ada interferensi atau kerusakan mekanik pada kabel.</p>
+    </div>
+  </main>
+
+  <!-- Panel Unduhan Elegan -->
+  <section class="scroll-reveal" id="DC" style="background-color: var(--bg); padding: 3rem 1.5rem 4rem; border-top: 1px solid var(--border);">
+    <div style="max-width: 880px; margin: 0 auto;">
+      <h3 style="font-size: 1.2rem; font-weight: 600; color: var(--primary); margin-bottom: 1.5rem; border-left: 4px solid var(--primary); padding-left: 0.75rem;">
+        Download File PKL
+      </h3>
+      <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+        <a href="FARIL.pdf" download style="padding: 0.75rem 1rem; background-color: var(--surface); border: 1px solid var(--border); border-radius: 6px; color: var(--text); text-decoration: none; font-size: 0.95rem; transition: background 0.2s;">
+          File 1
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tombol Scroll ke Atas -->
+  <button id="scrollTopBtn" title="Kembali ke Atas" aria-label="Scroll to top">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+    </svg>
+  </button>
+
+  <!-- Script -->
+  <script>
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    const scrollBtn = document.getElementById("scrollTopBtn");
+    window.addEventListener("scroll", () => {
+      scrollBtn.style.display = window.scrollY > 100 ? "flex" : "none";
+    });
+    scrollBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // Animasi scroll masuk
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>

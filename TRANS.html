@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Materi - NETRANOVA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #bd1e1e;
+      --bg: #0f0f11;
+      --surface: #18181b;
+      --text: #ffffff;
+      --muted: #a1a1aa;
+      --border: #2a2a2e;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      font-family: 'Urbanist', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+    }
+
+    .container {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    header {
+      padding: 2rem 1rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    header h2 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .nav-buttons {
+      margin-top: 1.2rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .nav-buttons button {
+      background-color: transparent;
+      border: 1px solid var(--border);
+      padding: 0.5rem 1.2rem;
+      border-radius: 6px;
+      color: var(--text);
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .nav-buttons button:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .materi-item {
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .materi-item h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .materi-item p {
+      font-size: 1rem;
+      color: var(--text);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 99;
+      background: rgba(189, 30, 30, 0.15);
+      border: 1px solid rgba(189, 30, 30, 0.3);
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+      backdrop-filter: blur(4px);
+    }
+
+    #scrollTopBtn:hover {
+      background: rgba(189, 30, 30, 0.3);
+      transform: scale(1.08);
+    }
+
+    #scrollTopBtn svg {
+      width: 24px;
+      height: 24px;
+      stroke: white;
+      stroke-width: 2;
+    }
+
+    /* ANIMASI FADE IN SAAT LOAD */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    .fade-in.delay-1 { animation-delay: 0.2s; }
+    .fade-in.delay-2 { animation-delay: 0.4s; }
+    .fade-in.delay-3 { animation-delay: 0.6s; }
+    .fade-in.delay-4 { animation-delay: 0.8s; }
+    .fade-in.delay-5 { animation-delay: 1s; }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ANIMASI MUNCUL SAAT SCROLL */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.6s ease-out;
+    }
+
+    .scroll-reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 600px) {
+      header h2 {
+        font-size: 1.5rem;
+      }
+
+      .nav-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .nav-buttons button {
+        width: 100%;
+        max-width: 280px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="fade-in delay-1">
+    <h2>TRANS DIGITAL</h2>
+    <div class="nav-buttons fade-in delay-2">
+      <button onclick="scrollToSection('m1')">ISO</button>
+      <button onclick="scrollToSection('m2')">PKSHI</button>
+      <button onclick="scrollToSection('m3')">PRP</button>
+      <button onclick="scrollToSection('m4')">PPKPP</button>
+      <button onclick="scrollToSection('DC')">Download File PKL</button>
+    </div>
+  </header>
+
+  <!-- Konten -->
+  <main class="container">
+    <div class="materi-item fade-in delay-3" id="m1">
+      <h3>Instalasi Sistem Operasi dan Aplikasi pada Perangkat Komputer dan Laptop</h3>
+      <p>Materi yang tercakup:</p>
+      <p>Persiapan instalasi sistem operasi Windows, terutama menggunakan flashdisk bootable sebagai media pemasang.</p>
+      <p>Pengaturan awal BIOS agar perangkat dapat melakukan boot dari USB.</p>
+      <p>Pemilihan versi sistem operasi yang sesuai (misalnya Windows 10 atau Windows 11).</p>
+      <p>Pengelolaan partisi: memilih drive tempat OS diinstal, melakukan format drive C, dan memastikan data penting telah di-backup.</p>
+      <p>Instalasi driver pasca-pemasangan OS menggunakan software seperti Driver Pack Solution.</p>
+      <p>Instalasi software aplikasi pendukung seperti Microsoft Office, browser, antivirus, serta perangkat lunak utility lain.</p>
+      <p>Penyesuaian pengaturan dasar setelah instalasi: pengaturan waktu, nama pengguna, regional setting, aktivasi Windows, dan lainnya.</p>
+      <p>Contoh praktik:</p>
+      <p>Instalasi Windows pada laptop HP X360 14 Ek2555tu, Axioo Hype 1, Lenovo V14 G3, hingga PC AIO Lenovo dan Asus E410KA.</p>
+      <p>Instalasi Microsoft Office dan aplikasi sistem lainnya pada perangkat klien serta unit baru di toko.</p>
+    </div>
+
+    <div class="materi-item scroll-reveal" id="m2">
+      <h3>Perakitan Komputer dan Servis Hardware Internal</h3>
+      <p>Materi yang tercakup:</p>
+      <p>Perakitan CPU baru dari berbagai komponen: motherboard, prosesor, RAM, storage, power supply, casing.</p>
+      <p>Penggantian hardware pada perangkat bermasalah, termasuk:</p>
+      <p>Baterai laptop (contoh: Axioo 14F dan Mybook 14E)</p>
+      <p>Keyboard (Axioo Mybook Pro F3, Axioo 14E, Axioo 11G)</p>
+      <p>Cover laptop (Axioo Mybook 14E)</p>
+      <p>Analisis kerusakan fisik dan fungsional, seperti gangguan akibat benda asing (contoh: tikus menggigit kabel printer HP 315), kerusakan akibat tinta meluber, dan masalah hardware pada notebook Aspire One serta laptop Dell Inspiron 15.</p>
+      <p>Contoh praktik:</p>
+      <p>Servis pada laptop Lenovo Ideapad S210, Toshiba L510, Axioo Mybook 11G, hingga perangkat servis onsite di PNM untuk HP Probook 440 G9.</p>
+      <p>Perakitan dan pengujian PC di toko untuk kebutuhan klien maupun display.</p>
+    </div>
+
+    <div class="materi-item scroll-reveal" id="m3">
+      <h3>Perawatan dan Reset Printer</h3>
+      <p>Materi yang tercakup:</p>
+      <p>Identifikasi masalah printer berdasarkan gejala kerusakan (tidak mencetak, tinta meluber, kertas tidak masuk).</p>
+      <p>Servis printer secara manual seperti membersihkan bagian dalam, mengganti selang tinta, dan pembuangan tinta.</p>
+      <p>Reset printer Epson menggunakan Epson Adjustment Program, termasuk pengaturan:</p>
+      <p>Waste ink pad counter</p>
+      <p>Ink level status</p>
+      <p>Reset internal printer</p>
+      <p>Penggantian komponen printer, seperti tempat pembuangan tinta printer Epson L210 dan servicing unit yang rusak akibat cairan atau benda asing.</p>
+      <p>Contoh praktik:</p>
+      <p>Servis printer HP 580 dan HP 315 (masalah akibat benda asing dan gigitan tikus).</p>
+      <p>Reset dan setting printer Epson L380 serta Epson L120.</p>
+    </div>
+
+    <div class="materi-item scroll-reveal" id="m4">
+      <h3>Pengelolaan Pelayanan Konsumen dan Penjualan Produk</h3>
+      <p>Materi yang tercakup:</p>
+      <p>Pelayanan langsung terhadap pelanggan di toko, mencakup konsultasi masalah, pemilihan produk, dan penerimaan servis.</p>
+      <p>Penanganan penjualan laptop dengan aktivitas closing, termasuk pengecekan unit, penjelasan spesifikasi, dan penyusunan invoice.</p>
+      <p>Promosi dan representasi produk di lapangan, seperti menjaga stand di event Job Fair Lippo.</p>
+      <p>Pengantaran dan instalasi perangkat ke instansi eksternal, seperti ke SDN 2 Katobengke dan kantor KPU Buton Tengah.</p>
+      <p>Pengenalan proses pengadaan barang, seperti pengiriman printer L3210 dan L5290 ke Pasarwajo dan Wabula.</p>
+      <p>Contoh praktik:</p>
+      <p>Closing dan penjualan laptop HP 14s, Asus Vivobook, Axioo Z6 Metal, Acer Aspire AL14 31P, dan Axioo Hype 1.</p>
+      <p>Melayani pengunjung secara langsung selama operasional toko berlangsung (hampir setiap hari).</p>
+    </div>
+  </main>
+
+  <!-- Panel Unduhan Elegan -->
+  <section class="scroll-reveal" id="DC" style="background-color: var(--bg); padding: 3rem 1.5rem 4rem; border-top: 1px solid var(--border);">
+    <div style="max-width: 880px; margin: 0 auto;">
+      <h3 style="font-size: 1.2rem; font-weight: 600; color: var(--primary); margin-bottom: 1.5rem; border-left: 4px solid var(--primary); padding-left: 0.75rem;">
+        Download File PKL
+      </h3>
+      <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+        <a href="EZI.pdf" download style="padding: 0.75rem 1rem; background-color: var(--surface); border: 1px solid var(--border); border-radius: 6px; color: var(--text); text-decoration: none; font-size: 0.95rem; transition: background 0.2s;">
+          File 1
+        </a>
+        <a href="FAUZI.pdf" download style="padding: 0.75rem 1rem; background-color: var(--surface); border: 1px solid var(--border); border-radius: 6px; color: var(--text); text-decoration: none; font-size: 0.95rem; transition: background 0.2s;">
+          File 2
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tombol Scroll ke Atas -->
+  <button id="scrollTopBtn" title="Kembali ke Atas" aria-label="Scroll to top">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+    </svg>
+  </button>
+
+  <!-- Script -->
+  <script>
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    const scrollBtn = document.getElementById("scrollTopBtn");
+    window.addEventListener("scroll", () => {
+      scrollBtn.style.display = window.scrollY > 100 ? "flex" : "none";
+    });
+    scrollBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // Animasi scroll masuk
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>

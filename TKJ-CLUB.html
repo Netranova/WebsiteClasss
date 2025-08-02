@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Materi - NETRANOVA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #bd1e1e;
+      --bg: #0f0f11;
+      --surface: #18181b;
+      --text: #ffffff;
+      --muted: #a1a1aa;
+      --border: #2a2a2e;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      font-family: 'Urbanist', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+    }
+
+    .container {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    header {
+      padding: 2rem 1rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    header h2 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .nav-buttons {
+      margin-top: 1.2rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .nav-buttons button {
+      background-color: transparent;
+      border: 1px solid var(--border);
+      padding: 0.5rem 1.2rem;
+      border-radius: 6px;
+      color: var(--text);
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .nav-buttons button:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .materi-item {
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .materi-item h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .materi-item p {
+      font-size: 1rem;
+      color: var(--text);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 99;
+      background: rgba(189, 30, 30, 0.15);
+      border: 1px solid rgba(189, 30, 30, 0.3);
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+      backdrop-filter: blur(4px);
+    }
+
+    #scrollTopBtn:hover {
+      background: rgba(189, 30, 30, 0.3);
+      transform: scale(1.08);
+    }
+
+    #scrollTopBtn svg {
+      width: 24px;
+      height: 24px;
+      stroke: white;
+      stroke-width: 2;
+    }
+
+    /* ANIMASI FADE IN SAAT LOAD */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    .fade-in.delay-1 { animation-delay: 0.2s; }
+    .fade-in.delay-2 { animation-delay: 0.4s; }
+    .fade-in.delay-3 { animation-delay: 0.6s; }
+    .fade-in.delay-4 { animation-delay: 0.8s; }
+    .fade-in.delay-5 { animation-delay: 1s; }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ANIMASI MUNCUL SAAT SCROLL */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.6s ease-out;
+    }
+
+    .scroll-reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 600px) {
+      header h2 {
+        font-size: 1.5rem;
+      }
+
+      .nav-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .nav-buttons button {
+        width: 100%;
+        max-width: 280px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="fade-in delay-1">
+    <h2>TKJ CLUB</h2>
+    <div class="nav-buttons fade-in delay-2">
+      <button onclick="scrollToSection('m1')">SBK</button>
+      <button onclick="scrollToSection('m2')">IPTS</button>
+      <button onclick="scrollToSection('m3')">ISOKS</button>
+      <button onclick="scrollToSection('m4')">MFKAP</button>
+      <button onclick="scrollToSection('DC')">Download File PKL</button>
+    </div>
+  </header>
+
+  <!-- Konten -->
+  <main class="container">
+    <div class="materi-item fade-in delay-3" id="m1">
+      <h3>Sistem Bilangan dan Konversi dalam Dunia Komputer</h3>
+      <p>Dalam dunia teknik komputer dan jaringan, pemahaman sistem bilangan merupakan dasar penting. Sistem bilangan yang paling sering digunakan adalah biner, desimal, oktal, dan heksadesimal.</p>
+      <p>Bilangan biner hanya terdiri dari angka 0 dan 1. Sistem ini digunakan oleh mesin komputer karena mencerminkan sinyal digital (ON/OFF).</p>
+      <p>Bilangan desimal adalah sistem angka yang umum digunakan manusia, terdiri dari angka 0 sampai 9.</p>
+      <p>Bilangan oktal (basis 8) dan heksadesimal (basis 16) biasa digunakan untuk menyederhanakan tampilan angka biner panjang, terutama dalam penulisan alamat memori atau konfigurasi sistem.</p>
+      <p>Peserta PKL dilatih melakukan konversi antar sistem bilangan, seperti:</p>
+      <p>Konversi dari desimal ke biner dilakukan dengan membagi angka desimal dengan 2 secara berulang.</p>
+      <p>Konversi dari biner ke desimal dilakukan dengan menjumlahkan hasil perkalian setiap bit biner dengan pangkat dua sesuai posisinya.</p>
+      <p>Konversi juga dilakukan ke dan dari sistem oktal dan heksadesimal.</p>
+      <p>Materi ini menjadi landasan dalam memahami alamat IP, subnet mask, dan konfigurasi lainnya dalam jaringan.</p>
+    </div>
+
+    <div class="materi-item scroll-reveal" id="m2">
+      <h3>IP Address, Kelas IP, dan Teknik Subnetting</h3>
+      <p>Peserta PKL mempelajari secara mendalam tentang pengalamatan IP dan teknik subnetting.</p>
+<p>IP Address adalah alamat logis yang digunakan setiap perangkat dalam jaringan untuk saling berkomunikasi. Materi ini mencakup:</p>
+      <p>Struktur IP versi 4 (IPv4) yang terdiri dari empat oktet (contoh: 192.168.1.1).</p>
+      <p>Pembagian kelas IP berdasarkan range:</p>
+      <p>Kelas A: 1.0.0.0 – 126.255.255.255</p>
+      <p>Kelas B: 128.0.0.0 – 191.255.255.255</p>
+      <p>Kelas C: 192.0.0.0 – 223.255.255.255</p>
+      <p>Selain itu, peserta juga mempelajari Subnetting, yaitu membagi satu jaringan besar menjadi jaringan kecil agar pengalokasian IP lebih efisien dan tertata.</p>
+      <p>Praktik yang dilakukan termasuk:</p>
+      <p>Menentukan jumlah host dan subnet dengan rumus 2ⁿ - 2.</p>
+      <p>Menentukan network ID, broadcast address, IP awal, dan IP akhir.</p>
+      <p>Menggunakan prefix subnet, seperti /25, /26 hingga /30, untuk membagi jaringan menjadi kelompok lebih kecil yang disesuaikan kebutuhan jaringan.</p>
+      <p>Materi ini sangat penting karena hampir semua sistem jaringan mengandalkan pengaturan IP dan subnetting yang benar agar komunikasi data berjalan optimal.</p>
+    </div>
+
+    <div class="materi-item scroll-reveal" id="m3">
+      <h3>Instalasi Sistem Operasi dan Konfigurasi Server</h3>
+      <p>Pada tahapan ini, peserta menginstal dan mengelola berbagai server menggunakan sistem operasi Linux Debian 11.5. Materi ini bersifat praktik dan membutuhkan ketelitian. Beberapa server yang dikonfigurasi antara lain:</p>
+      <p>DNS Server: Berfungsi untuk menerjemahkan nama domain ke alamat IP. Peserta mengkonfigurasi dua domain lokal sebagai latihan.</p>
+      <p>Web Server: Digunakan untuk menampilkan halaman web. Peserta menggunakan Joomla, WordPress, dan Opencart untuk membangun halaman web secara mandiri.</p>
+      <p>FTP Server: Untuk transfer file antar komputer dalam jaringan.</p>
+      <p>Email Server: Untuk mengatur pengiriman dan penerimaan email secara lokal.</p>
+      <p>Proxy Server: Menjadi perantara antara pengguna dan internet, juga menyimpan cache untuk efisiensi akses.</p>
+      <p>File Server: Berfungsi untuk menyimpan dan membagikan file ke seluruh pengguna jaringan.</p>
+      <p>Monitoring Server (Munin): Untuk memantau status server dan jaringan.</p>
+      <p>DHCP Server: Memberikan IP secara otomatis kepada perangkat yang terhubung ke jaringan.</p>
+      <p>Peserta juga diajarkan perintah-perintah dasar Linux dan penggunaan script konfigurasi. Semua kegiatan dilakukan mulai dari konfigurasi manual file /etc/network/interfaces, perintah terminal, hingga menjalankan dan mengaktifkan layanan dengan systemctl.</p>
+    </div>
+
+    <div class="materi-item scroll-reveal" id="m4">
+      <h3>Mikrotik, Firewall, dan Konfigurasi Access Point</h3>
+      <p>Bagian akhir dari kegiatan PKL adalah mempelajari penggunaan router Mikrotik, konfigurasi firewall, dan pengaturan access point. Mikrotik adalah alat penting dalam pengaturan jaringan, khususnya pada jaringan menengah hingga besar.</p>
+      <p>Peserta mempelajari:</p>
+      <p>Konfigurasi dasar Mikrotik menggunakan aplikasi Winbox dan command line interface (CLI).</p>
+      <p>Firewall Mikrotik: Membuat aturan keamanan untuk memfilter dan mengatur lalu lintas data.</p>
+      <p>Hotspot: Membuat sistem login pengguna sebelum dapat mengakses internet.</p>
+      <p>Network Address Translation (NAT): Menyambungkan jaringan lokal ke jaringan publik (internet).</p>
+      <p>Selain itu, peserta juga melakukan:</p>
+      <p>Pemasangan Access Point (AP) baik dalam mode router maupun bridge.</p>
+      <p>Konfigurasi SSID, keamanan jaringan (password), dan channel Wi-Fi.</p>
+      <p>Pengujian jaringan nirkabel dengan menghubungkan perangkat client ke AP dan mengecek kestabilan koneksi.</p>
+    </div>
+  </main>
+
+  <!-- Panel Unduhan Elegan -->
+  <section class="scroll-reveal" id="DC" style="background-color: var(--bg); padding: 3rem 1.5rem 4rem; border-top: 1px solid var(--border);">
+    <div style="max-width: 880px; margin: 0 auto;">
+      <h3 style="font-size: 1.2rem; font-weight: 600; color: var(--primary); margin-bottom: 1.5rem; border-left: 4px solid var(--primary); padding-left: 0.75rem;">
+        Download File PKL
+      </h3>
+      <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+        <a href="ANGEL.pdf" download style="padding: 0.75rem 1rem; background-color: var(--surface); border: 1px solid var(--border); border-radius: 6px; color: var(--text); text-decoration: none; font-size: 0.95rem; transition: background 0.2s;">
+          File 1
+        </a>
+        <a href="AZIZAH.pdf" download style="padding: 0.75rem 1rem; background-color: var(--surface); border: 1px solid var(--border); border-radius: 6px; color: var(--text); text-decoration: none; font-size: 0.95rem; transition: background 0.2s;">
+          File 2
+        </a>
+        <a href="INDA.pdf" download style="padding: 0.75rem 1rem; background-color: var(--surface); border: 1px solid var(--border); border-radius: 6px; color: var(--text); text-decoration: none; font-size: 0.95rem; transition: background 0.2s;">
+          File 3
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tombol Scroll ke Atas -->
+  <button id="scrollTopBtn" title="Kembali ke Atas" aria-label="Scroll to top">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+    </svg>
+  </button>
+
+  <!-- Script -->
+  <script>
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    const scrollBtn = document.getElementById("scrollTopBtn");
+    window.addEventListener("scroll", () => {
+      scrollBtn.style.display = window.scrollY > 100 ? "flex" : "none";
+    });
+    scrollBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // Animasi scroll masuk
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>

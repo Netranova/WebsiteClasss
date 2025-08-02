@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Materi - NETRANOVA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #bd1e1e;
+      --bg: #0f0f11;
+      --surface: #18181b;
+      --text: #ffffff;
+      --muted: #a1a1aa;
+      --border: #2a2a2e;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      font-family: 'Urbanist', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+    }
+
+    .container {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    header {
+      padding: 2rem 1rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    header h2 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .nav-buttons {
+      margin-top: 1.2rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .nav-buttons button {
+      background-color: transparent;
+      border: 1px solid var(--border);
+      padding: 0.5rem 1.2rem;
+      border-radius: 6px;
+      color: var(--text);
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .nav-buttons button:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .materi-item {
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .materi-item h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .materi-item p {
+      font-size: 1rem;
+      color: var(--text);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 99;
+      background: rgba(189, 30, 30, 0.15);
+      border: 1px solid rgba(189, 30, 30, 0.3);
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+      backdrop-filter: blur(4px);
+    }
+
+    #scrollTopBtn:hover {
+      background: rgba(189, 30, 30, 0.3);
+      transform: scale(1.08);
+    }
+
+    #scrollTopBtn svg {
+      width: 24px;
+      height: 24px;
+      stroke: white;
+      stroke-width: 2;
+    }
+
+    /* ANIMASI FADE IN SAAT LOAD */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    .fade-in.delay-1 { animation-delay: 0.2s; }
+    .fade-in.delay-2 { animation-delay: 0.4s; }
+    .fade-in.delay-3 { animation-delay: 0.6s; }
+    .fade-in.delay-4 { animation-delay: 0.8s; }
+    .fade-in.delay-5 { animation-delay: 1s; }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ANIMASI MUNCUL SAAT SCROLL */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.6s ease-out;
+    }
+
+    .scroll-reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 600px) {
+      header h2 {
+        font-size: 1.5rem;
+      }
+
+      .nav-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .nav-buttons button {
+        width: 100%;
+        max-width: 280px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="fade-in delay-1">
+    <h2>TELKOM</h2>
+    <div class="nav-buttons fade-in delay-2">
+      <button onclick="scrollToSection('m1')">SLPLI</button>
+      <button onclick="scrollToSection('m2')">PPKFO</button>
+      <button onclick="scrollToSection('m3')">PSTB</button>
+      <button onclick="scrollToSection('m4')">PIJ</button>
+      <button onclick="scrollToSection('DC')">Download File PKL</button>
+    </div>
+  </header>
+
+  <!-- Konten -->
+  <main class="container">
+    <div class="materi-item fade-in delay-3" id="m1">
+      <h3>Survey Lokasi Pemasangan Layanan IndiHome</h3>
+      <p>Survey lokasi dilakukan untuk menilai kelayakan teknis suatu wilayah sebelum pemasangan jaringan layanan internet IndiHome. Tujuan dari survey ini adalah memastikan apakah jaringan Telkom dapat menjangkau rumah calon pelanggan secara efektif dan efisien.</p>
+      <p>Langkah-langkah:</p>
+      <p>1. Mengumpulkan gambaran lokasi dari pelanggan atau pihak pemohon layanan.</p>
+      <p>2. Melakukan kunjungan lapangan oleh teknisi ke area permukiman atau lokasi target.</p>
+      <p>3. Mengajukan izin kepada pejabat wilayah seperti kantor kelurahan/camat untuk kegiatan dokumentasi.</p>
+      <p>4. Menganalisis kemungkinan jalur penarikan kabel fiber optik, posisi tiang terdekat, dan hambatan lingkungan seperti pohon, bangunan tinggi, atau infrastruktur jalan.</p>
+      <p>5. Menentukan titik pemasangan yang memungkinkan dari segi teknis dan ekonomis.</p>
+    </div>
+
+    <div class="materi-item scroll-reveal" id="m2">
+      <h3>Pemasangan dan Penyambungan Kabel Fiber Optik (FO)</h3>
+      <p>Pemasangan kabel fiber optik adalah proses penarikan dan penyambungan kabel dari perangkat distribusi jaringan (seperti ODP atau OLT) ke lokasi pelanggan atau area baru. Penyambungan kabel dilakukan secara presisi menggunakan peralatan khusus.</p>
+      <p>Peralatan:</p>
+      <p>Kabel fiber optik, Cleaver (pemotong kabel optik), Splicer (penyambung serat optik), Splice sleeve (pelindung sambungan)</p>
+      <p>Prosedur:</p>
+      <p>1. Ujung kabel dipotong rata dan bersih menggunakan cleaver.</p>
+      <p>2. Pelindung sambungan (splice sleeve) disiapkan di ujung kabel.</p>
+      <p>3. Kabel disambung menggunakan mesin splicer yang menyatukan kedua ujung kabel dengan metode fusi (fusion splicing).</p>
+      <p>4. Pelindung sambungan dipanaskan hingga menyusut dan menutup rapat sambungan.</p>
+      <p>5. Sambungan diuji dengan perangkat pengukur loss optik untuk memastikan kualitas transmisi data.</p>
+    </div>
+
+    <div class="materi-item scroll-reveal" id="m3">
+      <h3>Penggantian STB (Set Top Box) dan Pengaturan Hak Akses WiFi</h3>
+      <p>Penggantian STB dan konfigurasi hak akses WiFi merupakan bagian dari kegiatan pemeliharaan dan optimalisasi layanan pelanggan IndiHome. STB digunakan untuk layanan TV interaktif berbasis jaringan.</p>
+      <p>Ruang Lingkup:</p>
+      <p>1. Mengidentifikasi STB bermasalah (kerusakan sistem, tidak responsif, atau tidak dapat terhubung ke jaringan).</p>
+      <p>2. Melakukan penggantian perangkat STB dengan unit baru yang telah dikonfigurasi.</p>
+      <p>3. Melakukan sinkronisasi STB dengan TV dan jaringan internet pelanggan.</p>
+      <p>Mengakses dashboard modem pelanggan untuk:</p>
+      <p>1. Mengatur nama jaringan (SSID) dan kata sandi.</p>
+      <p>2. Membatasi jumlah perangkat yang dapat terhubung ke WiFi.</p>
+      <p>3. Memblokir atau mengizinkan perangkat berdasarkan MAC address.</p>
+    </div>
+
+    <div class="materi-item scroll-reveal" id="m4">
+      <h3>Perapihan Infrastruktur Jaringan: ODC, OLT, dan Jalur FO</h3>
+      <p>Perapihan infrastruktur jaringan mencakup kegiatan pemeliharaan perangkat distribusi utama dan kabel jaringan untuk memastikan stabilitas dan kualitas jaringan tetap optimal.</p>
+      <p>Cakupan Kegiatan:</p>
+      <p>1. Merapikan ODC (Optical Distribution Cabinet) agar kabel tersusun rapi dan tidak menyebabkan interferensi.</p>
+      <p>2. Mengatur dan mengelompokkan port di OLT (Optical Line Terminal) agar koneksi antar port jelas dan terhindar dari kesalahan koneksi.</p>
+      <p>3. Merapikan kabel fiber optik di sepanjang tiang atau jalur kabel, termasuk membersihkan semak atau penghalang fisik di sepanjang jalur.</p>
+    </div>
+  </main>
+
+  <!-- Panel Unduhan Elegan -->
+  <section class="scroll-reveal" id="DC" style="background-color: var(--bg); padding: 3rem 1.5rem 4rem; border-top: 1px solid var(--border);">
+    <div style="max-width: 880px; margin: 0 auto;">
+      <h3 style="font-size: 1.2rem; font-weight: 600; color: var(--primary); margin-bottom: 1.5rem; border-left: 4px solid var(--primary); padding-left: 0.75rem;">
+        Download File PKL
+      </h3>
+      <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+        <a href="IRFAN.pdf" download style="padding: 0.75rem 1rem; background-color: var(--surface); border: 1px solid var(--border); border-radius: 6px; color: var(--text); text-decoration: none; font-size: 0.95rem; transition: background 0.2s;">
+          File 1
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tombol Scroll ke Atas -->
+  <button id="scrollTopBtn" title="Kembali ke Atas" aria-label="Scroll to top">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+    </svg>
+  </button>
+
+  <!-- Script -->
+  <script>
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    const scrollBtn = document.getElementById("scrollTopBtn");
+    window.addEventListener("scroll", () => {
+      scrollBtn.style.display = window.scrollY > 100 ? "flex" : "none";
+    });
+    scrollBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // Animasi scroll masuk
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Materi - NETRANOVA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #bd1e1e;
+      --bg: #0f0f11;
+      --surface: #18181b;
+      --text: #ffffff;
+      --muted: #a1a1aa;
+      --border: #2a2a2e;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      font-family: 'Urbanist', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+    }
+
+    .container {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    header {
+      padding: 2rem 1rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    header h2 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .nav-buttons {
+      margin-top: 1.2rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .nav-buttons button {
+      background-color: transparent;
+      border: 1px solid var(--border);
+      padding: 0.5rem 1.2rem;
+      border-radius: 6px;
+      color: var(--text);
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .nav-buttons button:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .materi-item {
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .materi-item h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .materi-item p {
+      font-size: 1rem;
+      color: var(--text);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 99;
+      background: rgba(189, 30, 30, 0.15);
+      border: 1px solid rgba(189, 30, 30, 0.3);
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+      backdrop-filter: blur(4px);
+    }
+
+    #scrollTopBtn:hover {
+      background: rgba(189, 30, 30, 0.3);
+      transform: scale(1.08);
+    }
+
+    #scrollTopBtn svg {
+      width: 24px;
+      height: 24px;
+      stroke: white;
+      stroke-width: 2;
+    }
+
+    /* ANIMASI FADE IN SAAT LOAD */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    .fade-in.delay-1 { animation-delay: 0.2s; }
+    .fade-in.delay-2 { animation-delay: 0.4s; }
+    .fade-in.delay-3 { animation-delay: 0.6s; }
+    .fade-in.delay-4 { animation-delay: 0.8s; }
+    .fade-in.delay-5 { animation-delay: 1s; }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ANIMASI MUNCUL SAAT SCROLL */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.6s ease-out;
+    }
+
+    .scroll-reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 600px) {
+      header h2 {
+        font-size: 1.5rem;
+      }
+
+      .nav-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .nav-buttons button {
+        width: 100%;
+        max-width: 280px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="fade-in delay-1">
+    <h2>MENTARI KOMPUTER</h2>
+    <div class="nav-buttons fade-in delay-2">
+      <button onclick="scrollToSection('m1')">PPSO</button>
+      <button onclick="scrollToSection('m2')">IPAP</button>
+      <button onclick="scrollToSection('m3')">IPSP</button>
+      <button onclick="scrollToSection('m4')">PSPP</button>
+      <button onclick="scrollToSection('DC')">Download File PKL</button>
+    </div>
+  </header>
+
+  <!-- Konten -->
+  <main class="container">
+    <div class="materi-item fade-in delay-3" id="m1">
+      <h3>Penginstalan dan Pemulihan Sistem Operasi Windows</h3>
+      <p>Kegiatan penting yang dilakukan adalah menginstal ulang sistem operasi, terutama Windows 10, menggunakan software backup recovery Acronis True Image 2019 Build 17750. Berikut tahapan teknisnya:</p>
+      <p>Persiapan Instalasi: Media instalasi (flashdisk/DVD) dimasukkan ke laptop/PC. Komputer dinyalakan, lalu pengguna masuk ke BIOS untuk mengatur urutan boot agar flashdisk berada di urutan teratas.</p>
+      <p>Proses Instalasi: Setelah BIOS tersetting dan proses boot berjalan, pengguna memilih menu seperti Program and Wipe, kemudian memilih opsi Backup and Restore di Acronis.</p>
+      <p>Recovery Image: Proses pemulihan dilakukan dengan memilih “Disk and Partition Recovery” untuk mengatur partisi yang akan dipulihkan. Jika partisi D menyimpan data penting, hanya partisi C yang dipilih agar data tetap aman.</p>
+      <p>Restart dan Driver Installation: Setelah proses recovery selesai, sistem akan restart otomatis. Saat itu, media instalasi dicabut. Proses selanjutnya adalah menginstal driver dengan mencolokkan kembali harddisk eksternal dan memastikan antivirus dinonaktifkan terlebih dahulu.</p>
+      <p>Kegiatan ini memberikan pembelajaran teknis lengkap dalam pemulihan sistem berbasis image, manajemen BIOS, dan instalasi driver setelah OS selesai dipulihkan.</p>
+    </div>
+
+    <div class="materi-item scroll-reveal" id="m2">
+      <h3>Instalasi dan Pengaturan Aplikasi Perkantoran (Microsoft Office)</h3>
+      <p>Setelah sistem operasi diinstal ulang, penggunaan dan penginstalan Microsoft Office menjadi bagian penting dari aktivitas PKL. Tahapan instalasinya antara lain:</p>
+      <p>Aktivasi Windows 11: Proses dimulai dengan menghidupkan laptop dan melakukan aktivasi Windows yang telah diinstal.</p>
+      <p>Koneksi Internet & Akun Microsoft: Siswa menghubungkan laptop ke Wi-Fi, melakukan login dengan akun Gmail, dan membuat PIN untuk keamanan.</p>
+      <p>Update Windows: Sistem akan melakukan update otomatis, memakan waktu sekitar 30 menit – 1 jam.</p>
+      <p>Instalasi Office: Setelah update, Microsoft Office seperti Word, Excel, PowerPoint, dan Access diinstal.</p>
+      <p>Personalisasi Sistem: Melalui Control Panel, dilakukan pengaturan seperti tampilan, tema, pemisahan drive (partisi C dan D), dan pengaturan waktu.</p>
+      <p>Manajemen Penyimpanan: Menggunakan fitur ‘Manage’ pada This PC untuk mempartisi penyimpanan serta mengelola keamanan sistem.</p>
+      <p>Bagian ini memperkenalkan peserta PKL pada pengelolaan dasar-dasar sistem operasi modern, software produktivitas, serta personalisasi dan konfigurasi sistem Windows.</p>
+    </div>
+
+    <div class="materi-item scroll-reveal" id="m3">
+      <h3>Instalasi dan Penggunaan Software Pendukung</h3>
+      <p>Selain Office, siswa juga dikenalkan dengan berbagai software aplikasi yang mendukung kegiatan kantor, multimedia, keamanan, dan pengelolaan data. Beberapa software yang dipelajari:</p>
+      <p>Google Chrome & Mozilla Firefox: Browser untuk keperluan pencarian dan koneksi internet.</p>
+      <p>Microsoft Word, Excel, PowerPoint: Aplikasi utama pengolah dokumen dan data.</p>
+      <p>VLC & KMPlayer: Pemutar multimedia untuk berbagai format video/audio.</p>
+      <p>Winamp: Pemutar musik.</p>
+      <p>Nitro Pro: Untuk pengelolaan file PDF (menggabung, edit, format).</p>
+      <p>Photoshop & CorelDraw: Untuk editing gambar dan desain grafis 2D (vektor/ilustrasi).</p>
+      <p>AVG Protection: Antivirus untuk perlindungan dari malware dan ancaman keamanan lainnya.</p>
+      <p>UltraISO: Untuk membuat salinan data CD/DVD seperti aslinya.</p>
+      <p>Recycle Bin & Control Panel: Untuk manajemen file dan sistem konfigurasi.</p>
+      <p>Siswa tidak hanya diajari cara menginstal, tapi juga fungsi dari masing-masing software tersebut. Kegiatan ini memperluas kemampuan teknis dalam manajemen dan penggunaan software aplikasi dalam dunia kerja nyata.</p>
+    </div>
+
+    <div class="materi-item scroll-reveal" id="m4">
+      <h3>Praktik Servis dan Pemeliharaan Perangkat Keras</h3>
+      <p>Peserta PKL melakukan berbagai kegiatan pemeliharaan perangkat keras, termasuk:</p>
+      <p>Mengisi Tinta Printer: Praktik pengisian tinta secara manual dan cara mereset printer setelah pengisian.</p>
+      <p>Instalasi Driver Printer: Melakukan instalasi driver khusus (misalnya Epson L3210) dan melakukan pengujian (test print) untuk memastikan hasil cetakan sesuai.</p>
+      <p>Pembongkaran Printer & Laptop: Mengamati dan melakukan pembongkaran perangkat keras seperti laptop dan printer untuk mengetahui susunan dan komponen internal.</p>
+      <p>Instalasi Aplikasi Pendukung: Setelah pembongkaran, dilakukan pengujian software untuk melihat kestabilan dan kinerja perangkat.</p>
+      <p>Melalui aktivitas ini, siswa memperoleh pengetahuan dasar hingga menengah dalam troubleshooting perangkat keras, mengasah keterampilan teknis, serta prosedur keselamatan kerja saat menangani hardware elektronik.</p>
+    </div>
+  </main>
+
+  <!-- Panel Unduhan Elegan -->
+  <section class="scroll-reveal" id="DC" style="background-color: var(--bg); padding: 3rem 1.5rem 4rem; border-top: 1px solid var(--border);">
+    <div style="max-width: 880px; margin: 0 auto;">
+      <h3 style="font-size: 1.2rem; font-weight: 600; color: var(--primary); margin-bottom: 1.5rem; border-left: 4px solid var(--primary); padding-left: 0.75rem;">
+        Download File PKL
+      </h3>
+      <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+        <a href="DILA.pdf" download style="padding: 0.75rem 1rem; background-color: var(--surface); border: 1px solid var(--border); border-radius: 6px; color: var(--text); text-decoration: none; font-size: 0.95rem; transition: background 0.2s;">
+          File 1
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tombol Scroll ke Atas -->
+  <button id="scrollTopBtn" title="Kembali ke Atas" aria-label="Scroll to top">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+    </svg>
+  </button>
+
+  <!-- Script -->
+  <script>
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    const scrollBtn = document.getElementById("scrollTopBtn");
+    window.addEventListener("scroll", () => {
+      scrollBtn.style.display = window.scrollY > 100 ? "flex" : "none";
+    });
+    scrollBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // Animasi scroll masuk
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>
