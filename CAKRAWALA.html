@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Materi - NETRANOVA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #bd1e1e;
+      --bg: #0f0f11;
+      --surface: #18181b;
+      --text: #ffffff;
+      --muted: #a1a1aa;
+      --border: #2a2a2e;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      font-family: 'Urbanist', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+    }
+
+    .container {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    header {
+      padding: 2rem 1rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    header h2 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .nav-buttons {
+      margin-top: 1.2rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .nav-buttons button {
+      background-color: transparent;
+      border: 1px solid var(--border);
+      padding: 0.5rem 1.2rem;
+      border-radius: 6px;
+      color: var(--text);
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .nav-buttons button:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .materi-item {
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .materi-item h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .materi-item p {
+      font-size: 1rem;
+      color: var(--text);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 99;
+      background: rgba(189, 30, 30, 0.15);
+      border: 1px solid rgba(189, 30, 30, 0.3);
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+      backdrop-filter: blur(4px);
+    }
+
+    #scrollTopBtn:hover {
+      background: rgba(189, 30, 30, 0.3);
+      transform: scale(1.08);
+    }
+
+    #scrollTopBtn svg {
+      width: 24px;
+      height: 24px;
+      stroke: white;
+      stroke-width: 2;
+    }
+
+    /* ANIMASI FADE IN SAAT LOAD */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    .fade-in.delay-1 { animation-delay: 0.2s; }
+    .fade-in.delay-2 { animation-delay: 0.4s; }
+    .fade-in.delay-3 { animation-delay: 0.6s; }
+    .fade-in.delay-4 { animation-delay: 0.8s; }
+    .fade-in.delay-5 { animation-delay: 1s; }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ANIMASI MUNCUL SAAT SCROLL */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.6s ease-out;
+    }
+
+    .scroll-reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 600px) {
+      header h2 {
+        font-size: 1.5rem;
+      }
+
+      .nav-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .nav-buttons button {
+        width: 100%;
+        max-width: 280px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="fade-in delay-1">
+    <h2>CAKRAWALA</h2>
+    <div class="nav-buttons fade-in delay-2">
+      <button onclick="scrollToSection('m1')">PPPK</button>
+      <button onclick="scrollToSection('m2')">IKSO</button>
+      <button onclick="scrollToSection('m3')">KPJK</button>
+      <button onclick="scrollToSection('m4')">TMP</button>
+      <button onclick="scrollToSection('DC')">Download File PKL</button>
+    </div>
+  </header>
+
+  <!-- Konten -->
+  <main class="container">
+    <div class="materi-item fade-in delay-3" id="m1">
+      <h3>Perakitan dan Perbaikan Perangkat Keras</h3>
+      <p>Materi ini mencakup berbagai kegiatan teknis pada level perangkat keras, termasuk:</p>
+      <p>Pembongkaran dan Pemasangan Komponen Laptop:</p>
+      <p>Mencakup proses membuka casing, melepas dan memasang ulang hardware seperti keyboard, LCD, mainboard, RAM, harddisk, hingga baterai CMOS. Langkah ini penting untuk mengenali letak dan fungsi tiap komponen serta teknik servis standar.</p>
+      <p>Penggantian Komponen:</p>
+      <p>Meliputi aktivitas mengganti hardware yang rusak atau usang, seperti mengganti harddisk dengan SSD, mengganti RAM untuk peningkatan performa, mengganti LCD yang retak, atau mengganti mainboard yang rusak.</p>
+      <p>Perakitan Unit Komputer:</p>
+      <p>Materi ini menjelaskan tentang merakit CPU dari awal, menyusun komponen seperti prosesor, motherboard, PSU, HDD/SSD, dan kipas pendingin ke dalam casing, hingga melakukan pengkabelan internal.</p>
+      <p>Quality Control (QC):</p>
+      <p>Setelah perakitan dan perbaikan, dilakukan pengecekan kelayakan fungsi perangkat. Kegiatan ini meliputi uji performa perangkat, pengujian kestabilan sistem, pengecekan konektor, dan identifikasi cacat teknis.</p>
+    </div>
+
+    <div class="materi-item scroll-reveal" id="m2">
+      <h3>Instalasi dan Konfigurasi Sistem Operasi serta Software Pendukung</h3>
+      <p>Materi ini berisi kegiatan instalasi sistem operasi dan aplikasi tambahan, antara lain:</p>
+      <p>Pembuatan Media Bootable (Bootingan):</p>
+      <p>Menggunakan tools seperti Rufus untuk membuat USB installer sistem operasi (Windows 7, 8.1, atau 10). Ini mencakup proses formatting flashdisk dan konfigurasi ISO OS.</p>
+      <p>Pengaturan BIOS dan UEFI:</p>
+      <p>Materi ini mencakup cara mengakses BIOS/UEFI, mengganti prioritas boot, mengaktifkan/menonaktifkan fitur secure boot, serta mengenali antarmuka sistem firmware.</p>
+      <p>Instalasi Sistem Operasi Windows:</p>
+      <p>Proses mencakup partisi harddisk, pemilihan drive instalasi, instalasi driver dasar, dan pengaturan awal sistem (akun pengguna, bahasa, zona waktu, dan aktivasi OS).</p>
+      <p>Instalasi Driver dan Aplikasi:</p>
+      <p>Setelah instalasi OS, dilakukan pemasangan driver chipset, VGA, LAN/WiFi, serta aplikasi dasar seperti Microsoft Office, WinRAR, browser, antivirus, dan program utilities lainnya.</p>
+    </div>
+
+    <div class="materi-item scroll-reveal" id="m3">
+      <h3>Konfigurasi dan Pengelolaan Jaringan Komputer</h3>
+      <p>Materi ini berkaitan dengan pembuatan dan pengelolaan jaringan menggunakan perangkat Mikrotik, termasuk:</p>
+      <p>Konfigurasi Dasar Mikrotik:</p>
+      <p>Menyetel IP address, DNS, NAT, DHCP server, dan bridge interface. Ini merupakan fondasi dari layanan jaringan berbasis router.</p>
+      <p>Hotspot Management:</p>
+      <p>Mencakup pembuatan jaringan hotspot menggunakan Mikrotik RouterOS. Pengaturan user hotspot dilakukan melalui User Profile, IP binding, dan session timeout.</p>
+      <p>Bandwidth Management:</p>
+      <p>Teknik membatasi kecepatan akses internet berdasarkan user, interface, atau IP tertentu dengan menggunakan fitur queue simple atau queue tree.</p>
+      <p>Blokir Situs Web dan Filtering Konten:</p>
+      <p>Menggunakan fitur firewall filter rules pada Mikrotik untuk memblokir situs-situs tertentu yang tidak diizinkan.</p>
+      <p>Virtual LAN (VLAN):</p>
+      <p>Materi tambahan pada beberapa siswa mencakup segmentasi jaringan menggunakan VLAN pada Mikrotik, yang digunakan untuk membagi jaringan berdasarkan fungsi atau departemen.</p>
+    </div>
+
+    <div class="materi-item scroll-reveal" id="m4">
+      <h3>Troubleshooting dan Maintenance Perangkat</h3>
+      <p>Materi ini memuat metode pemeliharaan dan penanganan masalah teknis komputer dan laptop:</p>
+      <p>Diagnosa Masalah Perangkat:</p>
+      <p>Mengidentifikasi penyebab laptop tidak menyala, hang, lambat, atau overheating. Pengujian dilakukan dengan mengganti komponen secara selektif atau menjalankan tools diagnostik.</p>
+      <p>Pembersihan dan Perawatan Hardware:</p>
+      <p>fisik pada kipas, motherboard, dan slot RAM menggunakan kuas, blower, atau alkohol isopropil. Langkah ini penting untuk mencegah overheating dan konsleting.</p>
+      <p>Backup dan Recovery Data:</p>
+      <p>Mencakup pencadangan data sebelum instalasi ulang sistem atau penggantian harddisk. Tools seperti AOMEI, EaseUS, atau fitur bawaan Windows digunakan untuk cloning atau backup.</p>
+      <p>Pengujian Kesehatan Harddisk dan Baterai:</p>
+      <p>Menggunakan aplikasi seperti CrystalDiskInfo, HDTune, dan BIOS diagnostics untuk memeriksa kesehatan fisik storage dan baterai laptop.</p>
+    </div>
+  </main>
+
+  <!-- Panel Unduhan Elegan -->
+  <section class="scroll-reveal" id="DC" style="background-color: var(--bg); padding: 3rem 1.5rem 4rem; border-top: 1px solid var(--border);">
+    <div style="max-width: 880px; margin: 0 auto;">
+      <h3 style="font-size: 1.2rem; font-weight: 600; color: var(--primary); margin-bottom: 1.5rem; border-left: 4px solid var(--primary); padding-left: 0.75rem;">
+        Download File PKL
+      </h3>
+      <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+        <a href="SILVI.pdf" download style="padding: 0.75rem 1rem; background-color: var(--surface); border: 1px solid var(--border); border-radius: 6px; color: var(--text); text-decoration: none; font-size: 0.95rem; transition: background 0.2s;">
+          File 1
+        </a>
+        <a href="AHLUN.pdf" download style="padding: 0.75rem 1rem; background-color: var(--surface); border: 1px solid var(--border); border-radius: 6px; color: var(--text); text-decoration: none; font-size: 0.95rem; transition: background 0.2s;">
+          File 2
+        </a>
+        <a href="ARSAT.pdf" download style="padding: 0.75rem 1rem; background-color: var(--surface); border: 1px solid var(--border); border-radius: 6px; color: var(--text); text-decoration: none; font-size: 0.95rem; transition: background 0.2s;">
+          File 3
+        </a>
+        <a href="SAFILA.pdf" download style="padding: 0.75rem 1rem; background-color: var(--surface); border: 1px solid var(--border); border-radius: 6px; color: var(--text); text-decoration: none; font-size: 0.95rem; transition: background 0.2s;">
+          File 4
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tombol Scroll ke Atas -->
+  <button id="scrollTopBtn" title="Kembali ke Atas" aria-label="Scroll to top">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+    </svg>
+  </button>
+
+  <!-- Script -->
+  <script>
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    const scrollBtn = document.getElementById("scrollTopBtn");
+    window.addEventListener("scroll", () => {
+      scrollBtn.style.display = window.scrollY > 100 ? "flex" : "none";
+    });
+    scrollBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // Animasi scroll masuk
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>
